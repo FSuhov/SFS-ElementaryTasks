@@ -34,6 +34,7 @@ namespace ChessBoard.UnitTests
                          expectedBoard.WhiteCell.Height == actualBoard.WhiteCell.Height;
 
             Assert.AreEqual(result, true);
+            //Assert.AreEqual<Board>(expectedBoard, actualBoard);
         }
 
         [TestMethod]
