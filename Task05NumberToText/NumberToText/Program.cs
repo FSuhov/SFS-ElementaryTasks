@@ -1,12 +1,20 @@
-﻿using System;
+﻿// <copyright file="Program.cs" company="Alex Brylov">
+// Copyright (c) Alex Brylov. All rights reserved.
+// Licensed under the MIT license. See LICENSE file in the project root for full license information.
+// </copyright>
+
 namespace NumberToText
 {
-    class Program
+    /// <summary>
+    /// Contains an entry point of application.
+    /// </summary>
+    internal class Program
     {
-        static void Main(string[] args)
-        {           
+        private static void Main(string[] args)
+        {
+            string[] localArgs = { "998001" };
             ConsoleNumberToWordsConverter converter = new ConsoleNumberToWordsConverter();
-            converter.Run(args);
+            converter.Run(localArgs);
         }
     }
 }

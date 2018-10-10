@@ -1,77 +1,91 @@
-﻿
+﻿// <copyright file="ConsoleNumberToWordsConverter.cs" company="Alex Brylov">
+// Copyright (c) Alex Brylov. All rights reserved.
+// Licensed under the MIT license. See LICENSE file in the project root for full license information.
+// </copyright>
 namespace NumberToText
 {
     using System;
 
-    public class ConsoleNumberToWordsConverter : IUserInterface
+    /// <summary>
+    /// Responsible for interaction with user via console input/output
+    /// </summary>
+    public class ConsoleNumberToWordsConverter
     {
-        private int number;
-        public string Words { get; set; }
-        public InputStatus Status { get; set; }
+        private const string USER_MANUAL = "This application converts numeric input into text output.\n" +
+                                          "It is limited to integer numbers, so the range varies from –2,147,483,648 to 2,147,483,647\n" +
+                                          "You may launch it from command line by entering the number after the .exe file name:\n" +
+                                          "on Windows 10:\n" +
+                                          "1. look up for cmd and launch it\n" +
+                                          "2. navigate to directory with .exe file: cd d:\\REPOS\\Elementarytasks\\Task04NumberToText\\NumberToText\\bin\\debug" +
+                                          "3. print: NumberToText.exe followed by space and the number to convert";
 
-        public enum InputStatus
+        private int number;
+        private string words;
+
+        private enum InputStatus
         {
-            noArgs,
-            invalidArgs,
-            validArgs
+            NoArgs,
+            InvalidArgs,
+            ValidArgs
         }
 
-        private const string USER_MANUAL = "This application converts numeric input into text output.\n" +
-                                           "It is limited to integer numbers, so the range varies from –2,147,483,648 to 2,147,483,647\n" +
-                                           "You may launch it from command line by entering the number after the .exe file name:\n" +
-                                           "on Windows 10:\n" +
-                                           "1. look up for cmd and launch it\n" +
-                                           "2. navigate to directory with .exe file: cd d:\\REPOS\\Elementarytasks\\Task04NumberToText\\NumberToText\\bin\\debug" +
-                                           "3. print: NumberToText.exe followed by space and the number to convert";
-
-        public void Run(string [] args)
+        /// <summary>
+        /// Gets and validates arguments passed from command line.
+        /// Provides user with feedback in case of wrong arguments.
+        /// Prompt user to enter the number manually from keyboard,
+        /// Prints result on the console upon correct arguments been submitted.
+        /// </summary>
+        /// <param name="args">Command line arguments. </param>
+        public void Run(string[] args)
         {
-            ReadAndValidateNumber(args);
-            switch (this.Status)
+            InputStatus status = this.ValidateUserInput(args);
+            switch (status)
             {
-                case InputStatus.noArgs:
+                case InputStatus.NoArgs:
                     Console.WriteLine(USER_MANUAL);
                     Console.WriteLine("===================================================================");
                     Console.WriteLine("The command line argument has not been submitted");
-                    RepeatEntry();
+                    this.RepeatEntry();
                     break;
-                case InputStatus.invalidArgs:
+                case InputStatus.InvalidArgs:
                     Console.WriteLine(USER_MANUAL);
                     Console.WriteLine("===================================================================");
                     Console.WriteLine("Invalid command line argument has been submitted");
-                    RepeatEntry();
+                    this.RepeatEntry();
                     break;
                 default:
-                    ConvertNumberToWords();
-                    Console.WriteLine(Words);
-                    RepeatEntry();
+                    this.words = NumberToWordsConverter.ConvertToWords(this.number);
+                    this.PrintResult();
+                    this.RepeatEntry();
                     break;
             }
         }
 
-        public void ConvertNumberToWords()
+        private InputStatus ValidateUserInput(string[] args)
         {
-            Words = NumberToWordsConverter.Convert(number);
-        }
-
-        public void ReadAndValidateNumber(string[] args)
-        {
-            if(args.Length == 0)
+            InputStatus status;
+            if (args.Length == 0)
             {
-                this.Status = InputStatus.noArgs;
+                status = InputStatus.NoArgs;
             }
             else
             {
-                if (int.TryParse(args[0], out number))
+                if (int.TryParse(args[0], out this.number))
                 {
-                    this.Status = InputStatus.validArgs;
+                    status = InputStatus.ValidArgs;
                 }
                 else
                 {
-                    this.Status = InputStatus.invalidArgs;
+                    status = InputStatus.InvalidArgs;
                 }
             }
-            
+
+            return status;
+        }
+
+        private void PrintResult()
+        {
+            Console.WriteLine(this.words);
         }
 
         private void RepeatEntry()
@@ -81,7 +95,7 @@ namespace NumberToText
             {
                 Console.WriteLine("Please enter an Integer number followed by enter key");
                 string userInput = Console.ReadLine();
-                Run(new string[] { userInput });
+                this.Run(new string[] { userInput });
             }
         }
     }
