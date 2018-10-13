@@ -1,27 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿// <copyright file="Program.cs" company="Oleksandr Brylov">
+// Copyright (c) Oleksandr Brylov. Task 06, LuckyTickets.
+// </copyright>
 
 namespace LuckyTickets
 {
-    class Program
+    /// <summary> Contains an entry point of the application. </summary>
+    internal class Program
     {
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
             string[] localArgs = { "input.txt" };
             ConsoleLuckyTicketCounter ticketCounter = new ConsoleLuckyTicketCounter();
-            ticketCounter.Init(localArgs);
+            ticketCounter.SetStatus(localArgs);
             ticketCounter.ShowResult();
-
-            //ILuckyTicketIdentifier ticketIdentifier = new LuckyTicketPeter();
-            //int x = ticketIdentifier.CountNumberOfLuckyTickets();
-            //Console.WriteLine(x);
-
-            //ticketIdentifier = new LuckyTicketMoscowExtended(8);
-            //x = ticketIdentifier.CountNumberOfLuckyTickets();
-            //Console.WriteLine(x);
         }
     }
 }

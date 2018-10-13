@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.28010.2003
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LuckyTickets", "LuckyTickets\LuckyTickets.csproj", "{5E42FB89-D0A4-4B28-9D8C-CF64316CF54C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LuckyTickets.UnitTests", "LuckyTickets.UnitTests\LuckyTickets.UnitTests.csproj", "{3466E6E7-679D-4766-83ED-783071E8A49D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{5E42FB89-D0A4-4B28-9D8C-CF64316CF54C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5E42FB89-D0A4-4B28-9D8C-CF64316CF54C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5E42FB89-D0A4-4B28-9D8C-CF64316CF54C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3466E6E7-679D-4766-83ED-783071E8A49D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3466E6E7-679D-4766-83ED-783071E8A49D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3466E6E7-679D-4766-83ED-783071E8A49D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3466E6E7-679D-4766-83ED-783071E8A49D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

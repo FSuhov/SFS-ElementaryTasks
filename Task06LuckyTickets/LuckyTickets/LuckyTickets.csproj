@@ -22,6 +22,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <DocumentationFile>bin\Debug\LuckyTickets.xml</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -43,17 +44,26 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ConsoleLuckyTicketCounter.cs" />
-    <Compile Include="ILuckyTicketIdentifier.cs" />
-    <Compile Include="LuckyTicketMoscow.cs" />
-    <Compile Include="LuckyTicketMoscowExtended.cs" />
-    <Compile Include="LuckyTicketPeter.cs" />
-    <Compile Include="LuckyTicketsConfig.cs" />
+    <Compile Include="ClassesExtended\LuckyTicketPeterExtended.cs" />
+    <Compile Include="Classes\ConsoleLuckyTicketCounter.cs" />
+    <Compile Include="Interfaces\ILuckyTicketIdentifier.cs" />
+    <Compile Include="Classes\LuckyTicketCounter.cs" />
+    <Compile Include="Classes\LuckyTicketMoscow.cs" />
+    <Compile Include="ClassesExtended\LuckyTicketMoscowExtended.cs" />
+    <Compile Include="Classes\LuckyTicketPeter.cs" />
+    <Compile Include="ConfigData\LuckyTicketsConfig.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Classes\Ticket.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="packages.config" />
+    <AdditionalFiles Include="stylecop.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <Analyzer Include="..\packages\StyleCop.Analyzers.1.0.2\analyzers\dotnet\cs\StyleCop.Analyzers.CodeFixes.dll" />
+    <Analyzer Include="..\packages\StyleCop.Analyzers.1.0.2\analyzers\dotnet\cs\StyleCop.Analyzers.dll" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
