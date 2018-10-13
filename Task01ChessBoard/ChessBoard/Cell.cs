@@ -1,28 +1,32 @@
 ﻿// <copyright file="Cell.cs" company="Oleksandr Brylov">
-// Copyright (c) Oleksandr Brylov. All rights reserved.
-// Licensed under the MIT license. See LICENSE file in the project root for full license information.
+// Copyright (c) Oleksandr Brylov. Task 01 - Chessboard.
 // </copyright>
 
 namespace ChessBoard
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
-
     /// <summary>
     /// Represents a cell of Chessboard
     /// </summary>
-    public struct Cell
+    public class Cell
     {
-        /// <summary> Width of cell </summary>
-        public int Width;
+        /// <summary> Initializes a new instance of the <see cref="Cell"/> class. </summary>
+        /// <param name="width"> Width of cell. </param>
+        /// <param name="height"> Height of cell. </param>
+        /// <param name="isWhite"> Indicates whether the color of cell is white. </param>
+        public Cell(int width, int height, bool isWhite)
+        {
+            this.Width = width;
+            this.Height = height;
+            this.IsWhite = isWhite;
+        }
 
-        /// <summary> Height of cell </summary>
-        public int Height;
+        /// <summary> Gets or sets width of cell </summary>
+        public int Width { get; set; }
 
-        /// <summary> Indicates whether the cell is white </summary>
-        public bool IsWhite;
+        /// <summary> Gets or sets height of cell </summary>
+        public int Height { get; set; }
+
+        /// <summary> Gets or sets a value indicating whether the color of cell is white </summary>
+        public bool IsWhite { get; set; }
     }
 }

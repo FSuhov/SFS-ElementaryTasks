@@ -1,6 +1,5 @@
 ﻿// <copyright file="Program.cs" company="Oleksandr Brylov">
-// Copyright (c) Oleksandr Brylov. All rights reserved.
-// Licensed under the MIT license. See LICENSE file in the project root for full license information.
+// Copyright (c) Oleksandr Brylov. Task 01 - Chessboard.
 // </copyright>
 namespace ChessBoard
 {
@@ -15,13 +14,10 @@ namespace ChessBoard
     {
         private static void Main(string[] args)
         {
-            string[] localArgs = { "48", "32", "true" };
-            UserInterfaceConsole userInterface = new UserInterfaceConsole();
-            Board board = userInterface.CreateBoard(localArgs);
-            if (board != null)
-            {
-                userInterface.PrintBoard(board);
-            }
+            string[] localArgs = { "108", "73" };
+            ChessBoardConsoleUserInterface chessBoard = new ChessBoardConsoleUserInterface();
+            chessBoard.ReadInputAndSetStatus(localArgs);
+            chessBoard.PrintBoardOrMessage();
         }
     }
 }

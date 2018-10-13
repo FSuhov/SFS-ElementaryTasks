@@ -49,8 +49,9 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="UserInterfaceConsoleTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="BoardTests.cs" />
+    <Compile Include="ConsoleInterfaceTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
