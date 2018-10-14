@@ -1,6 +1,5 @@
 ﻿// <copyright file="Config.cs" company="Oleksandr Brylov">
-// Copyright (c) Oleksandr Brylov. All rights reserved.
-// Licensed under the MIT license. See LICENSE file in the project root for full license information.
+// Copyright (c) Oleksandr Brylov. Task 4 - File Parser
 // </copyright>
 
 namespace FileParser
