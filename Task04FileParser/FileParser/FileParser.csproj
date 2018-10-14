@@ -45,11 +45,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Config.cs" />
-    <Compile Include="FileParserConsole.cs" />
-    <Compile Include="FileParser.cs" />
-    <Compile Include="IUserInputOutput.cs" />
+    <Compile Include="ConsoleUserInterface.cs" />
+    <Compile Include="CustomExceptions\FailedToDeleteTempFileException.cs" />
+    <Compile Include="CustomExceptions\FailedToReplaceFileException.cs" />
+    <Compile Include="CustomExceptions\FileToParseNotFoundException.cs" />
+    <Compile Include="IFileParser.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Replacer.cs" />
+    <Compile Include="Seeker.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

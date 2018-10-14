@@ -9,10 +9,9 @@ namespace FileParser
     {
         private static void Main(string[] args)
         {
-            string[] localArgs = { "input.txt", "REPLACED", "is", "tr" };
-            FileParserConsole fileParcer = new FileParserConsole();
-            fileParcer.ReadUserInput(localArgs);
-            fileParcer.ParseFile();
+            string[] localArgs = { "input.txt", "is", "REPLACED" };
+            ConsoleUserInterface userInterface = new ConsoleUserInterface();
+            userInterface.ReadUserInput(localArgs);
         }
     }
 }
