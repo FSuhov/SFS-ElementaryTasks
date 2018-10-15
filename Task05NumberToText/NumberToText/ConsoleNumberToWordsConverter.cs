@@ -10,7 +10,7 @@ namespace NumberToText
     /// </summary>
     public class ConsoleNumberToWordsConverter
     {
-        private int number;
+        private long number;
         private string words;
         private NumberToWordsConverter _converter;
 
@@ -62,7 +62,7 @@ namespace NumberToText
             }
             else
             {
-                if (int.TryParse(args[0], out this.number))
+                if (long.TryParse(args[0], out this.number))
                 {
                     status = InputStatus.ValidArgs;
                     if (args.Length > 1)
@@ -85,6 +85,7 @@ namespace NumberToText
 
         private void PrintResult()
         {
+            Console.WriteLine(this.number);
             Console.WriteLine(this.words);
         }
 

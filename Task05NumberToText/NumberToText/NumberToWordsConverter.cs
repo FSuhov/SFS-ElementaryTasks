@@ -124,7 +124,7 @@ namespace NumberToText
                         this._result.AppendFormat("{0} hundred ", this._smallNumbersText[hundreds]);
                         break;
                     case Locale.RU:
-                        this._result.AppendFormat(" {0} ", this._hundredsText[hundreds]);
+                        this._result.AppendFormat("{0} ", this._hundredsText[hundreds]);
                         break;
                 }
 

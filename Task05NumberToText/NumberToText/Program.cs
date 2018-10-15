@@ -11,7 +11,7 @@ namespace NumberToText
     {
         private static void Main(string[] args)
         {
-            string[] localArgs = { "1150909", "ru" };
+            string[] localArgs = { "1150909000000000", "ru" };
             ConsoleNumberToWordsConverter converter = new ConsoleNumberToWordsConverter();
             converter.Run(localArgs);
         }

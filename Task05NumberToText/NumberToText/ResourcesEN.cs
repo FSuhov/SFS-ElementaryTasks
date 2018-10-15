@@ -30,6 +30,7 @@ namespace NumberToText
         /// <summary> Keys and values for large numbers. </summary>
         public static readonly Dictionary<long, string> TEXT_LARGE_NUMBERS = new Dictionary<long, string>()
         {
+            { 1000000000000000, "quadrillion" },
             { 1000000000000, "trillion" },
             { 1000000000, "billion" },
             { 1000000, "million" },

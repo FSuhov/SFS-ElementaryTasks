@@ -17,6 +17,7 @@ namespace NumberToText
         /// <summary> Keys and values for large numbers. </summary>
         public static readonly Dictionary<long, string> TEXT_LARGE_NUMBERS = new Dictionary<long, string>()
         {
+            { 1000000000000000, "квадриллион" },
             { 1000000000000, "триллион" },
             { 1000000000, "миллиард" },
             { 1000000, "миллион" },
@@ -26,6 +27,7 @@ namespace NumberToText
         /// <summary> Keys and values for units and tens. </summary>
         public static readonly Dictionary<long, string> TEXT_LARGE_NUMBERS_PLURALS = new Dictionary<long, string>()
         {
+            { 1000000000000000, "квадриллионов" },
             { 1000000000000, "триллионов" },
             { 1000000000, "миллиардов" },
             { 1000000, "миллионов" },
