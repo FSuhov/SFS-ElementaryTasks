@@ -50,6 +50,8 @@
     <Compile Include="NumberToWordsConverter.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ResourcesEN.cs" />
+    <Compile Include="ResourcesRU.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

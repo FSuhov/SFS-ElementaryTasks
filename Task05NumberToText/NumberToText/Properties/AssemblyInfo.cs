@@ -1,6 +1,5 @@
 ﻿// <copyright file="AssemblyInfo.cs" company="Alex Brylov">
-// Copyright (c) Alex Brylov. All rights reserved.
-// Licensed under the MIT license. See LICENSE file in the project root for full license information.
+// Copyright (c) Alex Brylov. Task 5 - Number to text
 // </copyright>
 
 using System.Reflection;

@@ -1,6 +1,5 @@
 ﻿// <copyright file="Program.cs" company="Alex Brylov">
-// Copyright (c) Alex Brylov. All rights reserved.
-// Licensed under the MIT license. See LICENSE file in the project root for full license information.
+// Copyright (c) Alex Brylov. Task 5 - Number to text
 // </copyright>
 
 namespace NumberToText
@@ -12,7 +11,7 @@ namespace NumberToText
     {
         private static void Main(string[] args)
         {
-            string[] localArgs = { "998001" };
+            string[] localArgs = { "1150909", "ru" };
             ConsoleNumberToWordsConverter converter = new ConsoleNumberToWordsConverter();
             converter.Run(localArgs);
         }

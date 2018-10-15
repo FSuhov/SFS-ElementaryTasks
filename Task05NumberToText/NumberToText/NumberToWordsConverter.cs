@@ -1,104 +1,158 @@
 ﻿// <copyright file="NumberToWordsConverter.cs" company="Alex Brylov">
-// Copyright (c) Alex Brylov. All rights reserved.
-// Licensed under the MIT license. See LICENSE file in the project root for full license information.
+// Copyright (c) Alex Brylov. Task 5 - Number to text
 // </copyright>
 namespace NumberToText
 {
     using System;
     using System.Collections.Generic;
+    using System.Linq;
     using System.Text;
 
     /// <summary>
     /// Implements logic of the application:
-    /// contains static data arrays and method of convertion of number to text.
+    /// Contains methods of convertion of number to text and set of data.
     /// </summary>
-    public static class NumberToWordsConverter
+    public class NumberToWordsConverter
     {
-        private static readonly string[] UNITS =
-        {
-            "zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten",
-            "eleven", "twelve", "thirteen", "fourtheen", "fifteen", "sixteen", "seventeen", "eighteen", "nineteen"
-        };
-
-        private static readonly string[] TENS = { "zero", "ten", "twenty", "thirty", "forty", "fifty", "sixty", "seventy", "eighty", "ninety" };
-
-        private static readonly Dictionary<int, string> LARGE_NUMBERS = new Dictionary<int, string>()
-        {
-            { 100, " hundred " },
-            { 1000, " thousand " },
-            { 1000000, " million " },
-            { 1000000000, " billion " }
-        };
+        private Dictionary<long, string> _smallNumbersText;
+        private Dictionary<long, string> _largeNumbersText;
+        private Dictionary<long, string> _largeNumbersTextPlurals;
+        private Dictionary<long, string> _hundredsText;
+        private string _negative;
+        private StringBuilder _result;
+        private Locale _locale;
 
         /// <summary>
-        /// Converts numeric representation of integer number into next representation.
+        /// Initializes a new instance of the <see cref="NumberToWordsConverter"/> class.
         /// </summary>
-        /// <param name="number"> Integer to be converted. </param>
-        /// <returns> Text representation of number. </returns>
-        public static string ConvertToWords(int number)
+        /// <param name="localization"> Optional parameter that sets language for output. </param>
+        public NumberToWordsConverter(string localization = "en")
         {
-            if (number == 0)
+            this.SetLocalizedResources(localization);
+        }
+
+        private enum Locale
+        {
+            EN,
+            RU
+        }
+
+        /// <summary>
+        /// Converts numeric representation of number into next representation.
+        /// </summary>
+        /// <param name="num"> Number to be converted. </param>
+        /// <returns> Text representation of number. </returns>
+        public string ConvertToWords(long num)
+        {
+            this._result = new StringBuilder();
+
+            if (num == 0)
             {
-                return UNITS[number];
+                this._result.Append(this._smallNumbersText[num]);
+                return this._result.ToString();
             }
 
-            if (number < 0)
+            if (num < 0)
             {
-                return ConvertToWords(Math.Abs(number));
+                this._result.Append(this._negative);
+                num = Math.Abs(num);
             }
 
-            StringBuilder result = new StringBuilder();
+            num = this._largeNumbersText.Aggregate(num, (current, scale) => this.Append(current, scale.Key));
+            this.AppendLessThanOneThousand(num);
 
-            if (number / 1_000_000_000 > 0)
-            {
-                result.Append(ConvertToWords(number / 1_000_000_000));
-                result.Append(LARGE_NUMBERS[1_000_000_000]);
-                number %= 1_000_000_000;
-            }
+            return this._result.ToString().Trim();
+        }
 
-            if (number / 1_000_000 > 0)
+        private long Append(long num, long largeDigit)
+        {
+            if (num > largeDigit - 1)
             {
-                result.Append(ConvertToWords(number / 1_000_000));
-                result.Append(LARGE_NUMBERS[1_000_000]);
-                number %= 1_000_000;
-            }
-
-            if (number / 1_000 > 0)
-            {
-                result.Append(ConvertToWords(number / 1_000));
-                result.Append(LARGE_NUMBERS[1_000]);
-                number %= 1_000;
-            }
-
-            if (number / 100 > 0)
-            {
-                result.Append(ConvertToWords(number / 100));
-                result.Append(LARGE_NUMBERS[100]);
-                number %= 100;
-            }
-
-            if (number > 0)
-            {
-                if (result.ToString() != string.Empty)
+                long baseScale = num / largeDigit;
+                this.AppendLessThanOneThousand(baseScale);
+                if (baseScale > 1)
                 {
-                    result.Append("and ");
-                }
-
-                if (number < 20)
-                {
-                    result.Append(UNITS[number]);
+                    this._result.AppendFormat("{0} ", this._largeNumbersTextPlurals[largeDigit]);
                 }
                 else
                 {
-                    result.Append(TENS[number / 10]);
-                    if ((number % 10) > 0)
-                    {
-                        result.Append(" " + UNITS[number % 10]);
-                    }
+                    this._result.AppendFormat("{0} ", this._largeNumbersText[largeDigit]);
                 }
+
+                num = num - (baseScale * largeDigit);
             }
 
-            return result.ToString();
+            return num;
+        }
+
+        private long AppendLessThanOneThousand(long num)
+        {
+            num = this.AppendHundreds(num);
+            num = this.AppendTens(num);
+            this.AppendUnits(num);
+            return num;
+        }
+
+        private void AppendUnits(long num)
+        {
+            if (num > 0)
+            {
+                this._result.AppendFormat("{0} ", this._smallNumbersText[num]);
+            }
+        }
+
+        private long AppendTens(long num)
+        {
+            if (num > 20)
+            {
+                var tens = ((long)(num / 10)) * 10;
+                this._result.AppendFormat("{0} ", this._smallNumbersText[tens]);
+                num = num - tens;
+            }
+
+            return num;
+        }
+
+        private long AppendHundreds(long num)
+        {
+            if (num > 99)
+            {
+                long hundreds = num / 100;
+                switch (this._locale)
+                {
+                    case Locale.EN:
+                        this._result.AppendFormat("{0} hundred ", this._smallNumbersText[hundreds]);
+                        break;
+                    case Locale.RU:
+                        this._result.AppendFormat(" {0} ", this._hundredsText[hundreds]);
+                        break;
+                }
+
+                num = num - (hundreds * 100);
+            }
+
+            return num;
+        }
+
+        private void SetLocalizedResources(string localization)
+        {
+            if (localization.Equals("ru"))
+            {
+                this._smallNumbersText = ResourcesRU.TEXT_NUMBERS;
+                this._largeNumbersText = ResourcesRU.TEXT_LARGE_NUMBERS;
+                this._largeNumbersTextPlurals = ResourcesRU.TEXT_LARGE_NUMBERS_PLURALS;
+                this._negative = ResourcesRU.MINUS;
+                this._hundredsText = ResourcesRU.TEXT_HUNDREDS;
+                this._locale = Locale.RU;
+            }
+            else
+            {
+                this._smallNumbersText = ResourcesEN.TEXT_NUMBERS;
+                this._largeNumbersText = ResourcesEN.TEXT_LARGE_NUMBERS;
+                this._largeNumbersTextPlurals = this._largeNumbersText;
+                this._negative = ResourcesEN.MINUS;
+                this._locale = Locale.EN;
+            }
         }
     }
 }

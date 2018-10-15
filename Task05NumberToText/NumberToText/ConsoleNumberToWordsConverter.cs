@@ -1,6 +1,5 @@
 ﻿// <copyright file="ConsoleNumberToWordsConverter.cs" company="Alex Brylov">
-// Copyright (c) Alex Brylov. All rights reserved.
-// Licensed under the MIT license. See LICENSE file in the project root for full license information.
+// Copyright (c) Alex Brylov. Task 5 - Number to text
 // </copyright>
 namespace NumberToText
 {
@@ -11,16 +10,9 @@ namespace NumberToText
     /// </summary>
     public class ConsoleNumberToWordsConverter
     {
-        private const string USER_MANUAL = "This application converts numeric input into text output.\n" +
-                                          "It is limited to integer numbers, so the range varies from –2,147,483,648 to 2,147,483,647\n" +
-                                          "You may launch it from command line by entering the number after the .exe file name:\n" +
-                                          "on Windows 10:\n" +
-                                          "1. look up for cmd and launch it\n" +
-                                          "2. navigate to directory with .exe file: cd d:\\REPOS\\Elementarytasks\\Task04NumberToText\\NumberToText\\bin\\debug" +
-                                          "3. print: NumberToText.exe followed by space and the number to convert";
-
         private int number;
         private string words;
+        private NumberToWordsConverter _converter;
 
         private enum InputStatus
         {
@@ -42,19 +34,19 @@ namespace NumberToText
             switch (status)
             {
                 case InputStatus.NoArgs:
-                    Console.WriteLine(USER_MANUAL);
+                    Console.WriteLine(ResourcesEN.USER_MANUAL);
                     Console.WriteLine("===================================================================");
                     Console.WriteLine("The command line argument has not been submitted");
                     this.RepeatEntry();
                     break;
                 case InputStatus.InvalidArgs:
-                    Console.WriteLine(USER_MANUAL);
+                    Console.WriteLine(ResourcesEN.USER_MANUAL);
                     Console.WriteLine("===================================================================");
                     Console.WriteLine("Invalid command line argument has been submitted");
                     this.RepeatEntry();
                     break;
                 default:
-                    this.words = NumberToWordsConverter.ConvertToWords(this.number);
+                    this.words = this._converter.ConvertToWords(this.number);
                     this.PrintResult();
                     this.RepeatEntry();
                     break;
@@ -73,6 +65,14 @@ namespace NumberToText
                 if (int.TryParse(args[0], out this.number))
                 {
                     status = InputStatus.ValidArgs;
+                    if (args.Length > 1)
+                    {
+                        this._converter = new NumberToWordsConverter(args[1]);
+                    }
+                    else
+                    {
+                        this._converter = new NumberToWordsConverter();
+                    }
                 }
                 else
                 {
@@ -95,7 +95,8 @@ namespace NumberToText
             {
                 Console.WriteLine("Please enter an Integer number followed by enter key");
                 string userInput = Console.ReadLine();
-                this.Run(new string[] { userInput });
+                string[] args = userInput.Split(' ');
+                this.Run(args);
             }
         }
     }
