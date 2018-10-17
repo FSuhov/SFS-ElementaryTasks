@@ -70,5 +70,7 @@ namespace NumberToText
             { 90, "ninety" },
             { 100, "hundred" },
         };
+
+        public const long MAX = 9_999_999_999_999_999;
     }
 }

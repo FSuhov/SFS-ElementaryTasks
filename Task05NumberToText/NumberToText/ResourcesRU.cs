@@ -81,5 +81,7 @@ namespace NumberToText
             { 90, "девяносто" },
             { 100, "сто" },
         };
+
+        public const long MAX = 9_999_999_999_999_999;
     }
 }

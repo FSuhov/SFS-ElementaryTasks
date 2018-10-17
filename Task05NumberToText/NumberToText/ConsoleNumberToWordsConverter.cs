@@ -62,7 +62,7 @@ namespace NumberToText
             }
             else
             {
-                if (long.TryParse(args[0], out this.number))
+                if (long.TryParse(args[0], out this.number) && this.number <= ResourcesEN.MAX)
                 {
                     status = InputStatus.ValidArgs;
                     if (args.Length > 1)
