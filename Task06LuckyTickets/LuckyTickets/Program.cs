@@ -9,7 +9,7 @@ namespace LuckyTickets
     {
         private static void Main(string[] args)
         {
-            string[] localArgs = { "input.txt" };
+            string[] localArgs = { "input.txt", "6" };
             ConsoleLuckyTicketCounter ticketCounter = new ConsoleLuckyTicketCounter();
             ticketCounter.SetStatus(localArgs);
             ticketCounter.ShowResult();

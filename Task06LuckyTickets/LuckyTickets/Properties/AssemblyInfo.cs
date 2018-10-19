@@ -1,4 +1,8 @@
-﻿using System.Reflection;
+﻿// <copyright file="AssemblyInfo.cs" company="Oleksandr Brylov">
+// Copyright (c) Oleksandr Brylov. Task 06, LuckyTickets.
+// </copyright>
+
+using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 

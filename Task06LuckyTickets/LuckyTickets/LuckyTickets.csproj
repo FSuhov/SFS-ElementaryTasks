@@ -44,12 +44,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ClassesExtended\LuckyTicketPeterExtended.cs" />
     <Compile Include="Classes\ConsoleLuckyTicketCounter.cs" />
     <Compile Include="Interfaces\ILuckyTicketIdentifier.cs" />
     <Compile Include="Classes\LuckyTicketCounter.cs" />
     <Compile Include="Classes\LuckyTicketMoscow.cs" />
-    <Compile Include="ClassesExtended\LuckyTicketMoscowExtended.cs" />
     <Compile Include="Classes\LuckyTicketPeter.cs" />
     <Compile Include="ConfigData\LuckyTicketsConfig.cs" />
     <Compile Include="Program.cs" />

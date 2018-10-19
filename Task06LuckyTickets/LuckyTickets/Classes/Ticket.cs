@@ -11,35 +11,58 @@ namespace LuckyTickets
     /// </summary>
     public class Ticket
     {
-        private long _number;
-        private int _digits;
+        private byte[] _numberAsArray;
 
         /// <summary> Initializes a new instance of the <see cref="Ticket"/> class. </summary>
         /// <param name="number"> Serial number of ticket. </param>
         /// <param name="digits"> Quantity of digits in serial number. </param>
-        public Ticket(long number, int digits)
+        public Ticket(ulong number, int digits)
         {
-            this._number = number;
-            this._digits = digits;
+            this._numberAsArray = this.NumberToArray(number, digits);
         }
 
-        /// <summary> Indexer of the Ticket. </summary>
+        /// <summary>
+        /// Indexer of the Ticket.
+        /// Throws exception if called out of range.
+        /// </summary>
         /// <param name="index"> Index of digit. </param>
         /// <returns> Value of that digit. </returns>
-        public int this[int index]
+        public byte this[int index]
         {
             get
             {
-                if (index >= this._digits || index < 0)
+                try
                 {
-                    return 0;
+                    return this._numberAsArray[index];
                 }
-                else
+                catch (IndexOutOfRangeException)
                 {
-                    return (int)((this._number % Math.Pow(10, this._digits - index))
-                                / Math.Pow(10, this._digits - index - 1));
+                    throw;
                 }
             }
+        }
+
+        /// <summary>
+        /// Gets the length of ticket serial number.
+        /// Required for methods that identifies whether the ticket is lucky or not.
+        /// </summary>
+        /// <returns> Length of serial number - i.e. number of digits. </returns>
+        public int GetNumberLength()
+        {
+            return this._numberAsArray.Length;
+        }
+
+        private byte[] NumberToArray(ulong number, int digits)
+        {
+            byte[] numberAsArray = new byte[digits];
+            ulong j = 10;
+            for (int i = digits - 1; i >= 0; i--)
+            {
+                numberAsArray[i] = (byte)(number % j);
+                number /= j;
+            }
+
+            return numberAsArray;
         }
     }
 }

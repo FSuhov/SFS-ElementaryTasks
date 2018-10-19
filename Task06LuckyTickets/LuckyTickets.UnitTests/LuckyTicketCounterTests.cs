@@ -7,25 +7,27 @@ namespace LuckyTickets.UnitTests
     public class LuckyTicketCounterTests
     {
         [TestMethod]
-        public void CountNumberOfLuckyTickets_WhenCalledWithDefaultDigits_ReturnsNumberOfTickets()
+        [DataRow(6, 55251)]
+        [DataRow(2, 9)]
+        public void CountNumberOfLuckyTickets_Moscow_ReturnsNumberOfTickets(int digits, int expected)
         {
             // Arrange
-            LuckyTicketCounter ticketCounter = new LuckyTicketCounter(new LuckyTicketMoscow());
+            LuckyTicketCounter ticketCounter = new LuckyTicketCounter(new LuckyTicketMoscow(), digits);
 
             // Act
             int actual = ticketCounter.CountNumberOfLuckyTickets();
 
             // Assert
-            Assert.AreEqual(55251, actual);
+            Assert.AreEqual(expected, actual);
         }
 
         [TestMethod]
         [DataRow(6, 55251)]
         [DataRow(2, 9)]
-        public void CountNumberOfLuckyTickets_WhenCalledWithExtendedDigits_ReturnsNumberOfTickets(int digits, int expected)
+        public void CountNumberOfLuckyTickets_Piter_ReturnsNumberOfTickets(int digits, int expected)
         {
             // Arrange
-            LuckyTicketCounter ticketCounter = new LuckyTicketCounter(new LuckyTicketMoscowExtended(digits), digits);
+            LuckyTicketCounter ticketCounter = new LuckyTicketCounter(new LuckyTicketPeter(), digits);
 
             // Act
             int actual = ticketCounter.CountNumberOfLuckyTickets();

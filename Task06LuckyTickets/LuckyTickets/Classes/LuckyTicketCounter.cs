@@ -11,7 +11,7 @@ namespace LuckyTickets
     /// </summary>
     public class LuckyTicketCounter
     {
-        private long _maxNumber;
+        private ulong _maxNumber;
         private int _digits;
 
         private ILuckyTicketIdentifier _ticketIdentifier;
@@ -20,19 +20,8 @@ namespace LuckyTickets
         /// Initializes a new instance of the <see cref="LuckyTicketCounter"/> class.
         /// </summary>
         /// <param name="ticketIdentifier"> An instance of object that implements ILuckyTicketIdentifier interface. </param>
-        public LuckyTicketCounter(ILuckyTicketIdentifier ticketIdentifier)
-        {
-            this._ticketIdentifier = ticketIdentifier;
-            this._maxNumber = 999_999;
-            this._digits = LuckyTicketsConfig.DEFAULT_DIGITS;
-        }
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="LuckyTicketCounter"/> class.
-        /// </summary>
-        /// <param name="ticketIdentifier"> An instance of object that implements ILuckyTicketIdentifier interface. </param>
         /// <param name="digits"> A number of digits in the ticket. </param>
-        public LuckyTicketCounter(ILuckyTicketIdentifier ticketIdentifier, int digits)
+        public LuckyTicketCounter(ILuckyTicketIdentifier ticketIdentifier, int digits = LuckyTicketsConfig.DEFAULT_DIGITS)
         {
             this._ticketIdentifier = ticketIdentifier;
             this._maxNumber = this.GetMaxNumber(digits);
@@ -46,7 +35,7 @@ namespace LuckyTickets
         public int CountNumberOfLuckyTickets()
         {
             int counter = 0;
-            for (int i = 1; i <= this._maxNumber; i++)
+            for (ulong i = 1; i <= this._maxNumber; i++)
             {
                 if (this._ticketIdentifier.IsLuckyTicket(new Ticket(i, this._digits)))
                 {
@@ -57,15 +46,20 @@ namespace LuckyTickets
             return counter;
         }
 
-        private long GetMaxNumber(int digits)
+        public override string ToString()
+        {
+            return string.Format("{0} within the range of 0 and {1}", this._ticketIdentifier.ToString(), this._maxNumber);
+        }
+
+        private ulong GetMaxNumber(int digits)
         {
             StringBuilder result = new StringBuilder();
             for (int i = 0; i < digits; i++)
             {
-                result.Append("9");
+                result.Append(LuckyTicketsConfig.MAX_VALUE);
             }
 
-            return long.Parse(result.ToString());
+            return ulong.Parse(result.ToString());
         }
     }
 }

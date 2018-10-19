@@ -20,6 +20,7 @@ namespace LuckyTickets
         /// <param name="args"> Command line arguments submitted by user. </param>
         public void SetStatus(string[] args)
         {
+            Console.WriteLine(LuckyTicketsConfig.USER_MANUAL);
             switch (args.Length)
             {
                 case 0:
@@ -44,8 +45,16 @@ namespace LuckyTickets
         {
             if (this._status == LuckyTicketsConfig.Status.Success)
             {
-                int result = this._ticketCounter.CountNumberOfLuckyTickets();
-                Console.WriteLine(result);
+                int result = 0;
+                try
+                {
+                    result = this._ticketCounter.CountNumberOfLuckyTickets();
+                    Console.WriteLine("There are {0} lucky tickets possible using {1} ", result, this._ticketCounter.ToString());
+                }
+                catch (IndexOutOfRangeException)
+                {
+                    Console.WriteLine("There was an error accessing one of tickets.");
+                }
             }
             else
             {
@@ -135,11 +144,11 @@ namespace LuckyTickets
                 switch (mode)
                 {
                     case "Moscow":
-                        this._ticketCounter = new LuckyTicketCounter(new LuckyTicketMoscowExtended(parsedDigits), parsedDigits);
+                        this._ticketCounter = new LuckyTicketCounter(new LuckyTicketMoscow(), parsedDigits);
                         status = LuckyTicketsConfig.Status.Success;
                         break;
                     case "Piter":
-                        this._ticketCounter = new LuckyTicketCounter(new LuckyTicketMoscowExtended(parsedDigits), parsedDigits);
+                        this._ticketCounter = new LuckyTicketCounter(new LuckyTicketPeter(), parsedDigits);
                         status = LuckyTicketsConfig.Status.Success;
                         break;
                     case "File not found":

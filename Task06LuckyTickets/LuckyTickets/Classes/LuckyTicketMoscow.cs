@@ -14,8 +14,26 @@ namespace LuckyTickets
         /// <returns> The result of check. </returns>
         public virtual bool IsLuckyTicket(Ticket ticket)
         {
-            return (ticket[0] + ticket[1] + ticket[2])
-                == (ticket[3] + ticket[4] + ticket[5]);
+            long leftSum = 0;
+            long rightSum = 0;
+            int digits = ticket.GetNumberLength();
+
+            for (int i = 0, j = digits / 2; i < digits / 2 && j < digits; i++, j++)
+            {
+                leftSum += ticket[i];
+                rightSum += ticket[j];
+            }
+
+            return leftSum == rightSum;
+        }
+
+        /// <summary>
+        /// Overrides ToString method, returning informative string about algorithm used.
+        /// </summary>
+        /// <returns> An informative string about algorithm used. </returns>
+        public override string ToString()
+        {
+            return "Moscow algorythm ";
         }
     }
 }

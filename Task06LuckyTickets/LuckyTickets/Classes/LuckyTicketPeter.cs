@@ -14,8 +14,26 @@ namespace LuckyTickets
         /// <returns> The result of check. </returns>
         public virtual bool IsLuckyTicket(Ticket ticket)
         {
-            return (ticket[0] + ticket[2] + ticket[4])
-                == (ticket[1] + ticket[3] + ticket[5]);
+            ulong leftSum = 0;
+            ulong rightSum = 0;
+            int digits = ticket.GetNumberLength();
+
+            for (int i = 0, j = 1; i < digits - 1 && j < digits; i += 2, j += 2)
+            {
+                leftSum += ticket[i];
+                rightSum += ticket[j];
+            }
+
+            return leftSum == rightSum;
+        }
+
+        /// <summary>
+        /// Overrides ToString method, returning informative string about algorithm used.
+        /// </summary>
+        /// <returns> An informative string about algorithm used. </returns>
+        public override string ToString()
+        {
+            return "Piter algorythm ";
         }
     }
 }

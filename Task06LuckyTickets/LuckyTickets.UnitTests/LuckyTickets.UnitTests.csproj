@@ -52,7 +52,8 @@
     <Compile Include="LuckyTicketMoscowTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="LuckyTicketCounterTests.cs" />
-    <Compile Include="LuckyTicketMoscowExtendedTests.cs" />
+    <Compile Include="TicketTests.cs" />
+    <Compile Include="LuckyTicketPiterTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
