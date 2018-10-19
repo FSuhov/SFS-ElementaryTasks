@@ -4,6 +4,7 @@
 namespace NumberToText
 {
     using System;
+    using NumberToText.Classes;
 
     /// <summary>
     /// Responsible for interaction with user via console input/output
@@ -12,14 +13,9 @@ namespace NumberToText
     {
         private long number;
         private string words;
-        private NumberToWordsConverter _converter;
-
-        private enum InputStatus
-        {
-            NoArgs,
-            InvalidArgs,
-            ValidArgs
-        }
+        private BaseConverter _converter;
+        private InputStatus statuse;
+        private Local local;
 
         /// <summary>
         /// Gets and validates arguments passed from command line.
@@ -45,10 +41,13 @@ namespace NumberToText
                     Console.WriteLine("Invalid command line argument has been submitted");
                     this.RepeatEntry();
                     break;
-                default:
+                case InputStatus.ValidArgs:
+                    this._converter = this.GetConverter();
                     this.words = this._converter.ConvertToWords(this.number);
                     this.PrintResult();
                     this.RepeatEntry();
+                    break;
+                default:
                     break;
             }
         }
@@ -67,11 +66,11 @@ namespace NumberToText
                     status = InputStatus.ValidArgs;
                     if (args.Length > 1)
                     {
-                        this._converter = new NumberToWordsConverter(args[1]);
+                        this.local = this.GetLocale(args[1]);
                     }
                     else
                     {
-                        this._converter = new NumberToWordsConverter();
+                        this.local = this.GetLocale();
                     }
                 }
                 else
@@ -83,6 +82,48 @@ namespace NumberToText
             return status;
         }
 
+        private Local GetLocale(string input = "en")
+        {
+            Local local;
+            string locale = input.ToLower();
+            switch (input)
+            {
+                case "en":
+                    local = Local.EN;
+                    break;
+                case "ru":
+                    local = Local.RU;
+                    break;
+                case "ua":
+                    local = Local.UA;
+                    break;
+                default:
+                    local = Local.EN;
+                    break;
+            }
+
+            return local;
+        }
+
+        private BaseConverter GetConverter()
+        {
+            BaseConverter converter = null;
+            switch (this.local)
+            {
+                case Local.RU:
+                    converter = new ConverterRU();
+                    break;
+                case Local.UA:
+                    converter = new ConverterUA();
+                    break;
+                default:
+                    converter = new ConverterEN();
+                    break;
+            }
+
+            return converter;
+        }
+
         private void PrintResult()
         {
             Console.WriteLine(this.number);
@@ -92,7 +133,7 @@ namespace NumberToText
         private void RepeatEntry()
         {
             Console.WriteLine("Would you like to enter another number manually=> (y) or exit=> (any other key)?");
-            if (Console.ReadLine() == "y")
+            if (Console.ReadLine().ToLower() == "y")
             {
                 Console.WriteLine("Please enter an Integer number followed by enter key");
                 string userInput = Console.ReadLine();
@@ -100,5 +141,19 @@ namespace NumberToText
                 this.Run(args);
             }
         }
+    }
+
+    public enum Local
+    {
+        EN,
+        RU,
+        UA
+    }
+
+    public enum InputStatus
+    {
+        NoArgs,
+        InvalidArgs,
+        ValidArgs
     }
 }

@@ -84,7 +84,7 @@ namespace NumberToText
 
             return num;
         }
-
+        //
         private long AppendLessThanOneThousand(long num)
         {
             num = this.AppendHundreds(num);
@@ -140,7 +140,7 @@ namespace NumberToText
             {
                 this._smallNumbersText = ResourcesRU.TEXT_NUMBERS;
                 this._largeNumbersText = ResourcesRU.TEXT_LARGE_NUMBERS;
-                this._largeNumbersTextPlurals = ResourcesRU.TEXT_LARGE_NUMBERS_PLURALS;
+                this._largeNumbersTextPlurals = ResourcesRU.TEXT_LARGE_NUMBERS_LARGE_PLURALS;
                 this._negative = ResourcesRU.MINUS;
                 this._hundredsText = ResourcesRU.TEXT_HUNDREDS;
                 this._locale = Locale.RU;

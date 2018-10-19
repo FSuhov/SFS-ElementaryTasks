@@ -4,6 +4,8 @@
 
 namespace NumberToText
 {
+    using NumberToText.Classes;
+
     /// <summary>
     /// Contains an entry point of application.
     /// </summary>
@@ -11,9 +13,13 @@ namespace NumberToText
     {
         private static void Main(string[] args)
         {
-            string[] localArgs = { "1150909000000000", "ru" };
+            string[] localArgs = { "511144001", "ua" };
             ConsoleNumberToWordsConverter converter = new ConsoleNumberToWordsConverter();
             converter.Run(localArgs);
+
+            //BaseConverter conv = new ConverterEN();
+            //string res = conv.ConvertToWords(192152590);
+            //System.Console.WriteLine(res);
         }
     }
 }

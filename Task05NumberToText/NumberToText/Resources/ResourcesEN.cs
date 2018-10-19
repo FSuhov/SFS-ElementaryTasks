@@ -12,6 +12,12 @@ namespace NumberToText
     /// </summary>
     public static class ResourcesEN
     {
+        /// <summary> Maximum limit of number this application can convert </summary>
+        public const long MAX = 9_999_999_999_999_999;
+
+        /// <summary> Minimum limit of number this application can convert </summary>
+        public const long MIN = -9_999_999_999_999_999;
+
         /// <summary> User manual text to be printed on the console if wrong arguments. </summary>
         public static readonly string USER_MANUAL = string.Format(
                          "========================================================================================={0}" +
@@ -25,7 +31,7 @@ namespace NumberToText
                          Environment.NewLine);
 
         /// <summary> A word to be added if negative number submitted. </summary>
-        public static readonly string MINUS = "minus ";
+        public static readonly string MINUS = "minus";
 
         /// <summary> Keys and values for large numbers. </summary>
         public static readonly Dictionary<long, string> TEXT_LARGE_NUMBERS = new Dictionary<long, string>()
@@ -70,7 +76,5 @@ namespace NumberToText
             { 90, "ninety" },
             { 100, "hundred" },
         };
-
-        public const long MAX = 9_999_999_999_999_999;
     }
 }

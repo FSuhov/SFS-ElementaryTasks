@@ -46,12 +46,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Classes\BaseConverter.cs" />
+    <Compile Include="Classes\ConverterEN.cs" />
+    <Compile Include="Classes\ConverterRU.cs" />
+    <Compile Include="Classes\ConverterUA.cs" />
     <Compile Include="ConsoleNumberToWordsConverter.cs" />
     <Compile Include="NumberToWordsConverter.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ResourcesEN.cs" />
-    <Compile Include="ResourcesRU.cs" />
+    <Compile Include="Resources\ResourcesEN.cs" />
+    <Compile Include="Resources\ResourcesRU.cs" />
+    <Compile Include="Resources\ResourcesUA.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -62,5 +67,6 @@
     <Analyzer Include="..\packages\StyleCop.Analyzers.1.0.2\analyzers\dotnet\cs\StyleCop.Analyzers.CodeFixes.dll" />
     <Analyzer Include="..\packages\StyleCop.Analyzers.1.0.2\analyzers\dotnet\cs\StyleCop.Analyzers.dll" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

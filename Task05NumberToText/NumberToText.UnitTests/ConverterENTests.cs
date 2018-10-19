@@ -1,10 +1,11 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NumberToText.Classes;
 
 namespace NumberToText.UnitTests
 {
     [TestClass]
-    public class NumberToWordsConverterTests
+    public class ConverterENTests
     {
         [TestMethod]
         [DataRow(54890, "fifty four thousand eight hundred ninety")]
@@ -13,7 +14,7 @@ namespace NumberToText.UnitTests
         public void ConvertToWords_ReturnsTextRepresentation(int number, string expected)
         {
             // Arrange
-            NumberToWordsConverter converter = new NumberToWordsConverter();
+            BaseConverter converter = new ConverterEN();
 
             // Act
             var actual = converter.ConvertToWords(number);
