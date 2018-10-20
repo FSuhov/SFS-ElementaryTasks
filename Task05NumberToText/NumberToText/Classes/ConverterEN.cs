@@ -10,10 +10,10 @@ namespace NumberToText.Classes
     using System.Text;
 
     /// <summary>
-    /// Implements logic of the application:
-    /// Contains methods of convertion of number to text and set of data.
+    /// Represents a class that can convert the value into English text representation.
+    /// Contains method for loading English language resources.
     /// </summary>
-    public class ConverterEN : BaseConverter
+    public class ConverterEN : ConverterEurope
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="ConverterEN"/> class.
@@ -24,11 +24,12 @@ namespace NumberToText.Classes
             this.LoadResources();
         }
 
+        /// <summary> Loads English dictionaries. </summary>
         protected void LoadResources()
         {
-            this._smallNumbersText = ResourcesEN.TEXT_NUMBERS;
-            this._largeNumbersText = ResourcesEN.TEXT_LARGE_NUMBERS;
-            this._negative = ResourcesEN.MINUS;
+            this.SmallNumbersText = ResourcesEN.TEXT_NUMBERS;
+            this.LargeNumbersText = ResourcesEN.TEXT_LARGE_NUMBERS;
+            this.Negative = ResourcesEN.MINUS;
         }
     }
 }

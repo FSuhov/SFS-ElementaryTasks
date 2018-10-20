@@ -14,7 +14,7 @@ namespace NumberToText.UnitTests
         public void ConvertToWords_ReturnsTextRepresentation(int number, string expected)
         {
             // Arrange
-            BaseConverter converter = new ConverterEN();
+            ConverterEurope converter = new ConverterEN();
 
             // Act
             var actual = converter.ConvertToWords(number);

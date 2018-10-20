@@ -16,10 +16,6 @@ namespace NumberToText
             string[] localArgs = { "511144001", "ua" };
             ConsoleNumberToWordsConverter converter = new ConsoleNumberToWordsConverter();
             converter.Run(localArgs);
-
-            //BaseConverter conv = new ConverterEN();
-            //string res = conv.ConvertToWords(192152590);
-            //System.Console.WriteLine(res);
         }
     }
 }

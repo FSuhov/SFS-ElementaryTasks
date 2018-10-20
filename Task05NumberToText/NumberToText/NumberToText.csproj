@@ -46,11 +46,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Classes\BaseConverter.cs" />
+    <Compile Include="Classes\ConverterEurope.cs" />
     <Compile Include="Classes\ConverterEN.cs" />
     <Compile Include="Classes\ConverterRU.cs" />
     <Compile Include="Classes\ConverterUA.cs" />
     <Compile Include="ConsoleNumberToWordsConverter.cs" />
+    <Compile Include="Interfaces\INumberToWordsConverter.cs" />
     <Compile Include="NumberToWordsConverter.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -60,6 +61,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="Classes\ClassDiagram1.cd" />
     <None Include="packages.config" />
     <AdditionalFiles Include="stylecop.json" />
   </ItemGroup>

@@ -1,21 +1,50 @@
 ﻿// <copyright file="ConsoleNumberToWordsConverter.cs" company="Alex Brylov">
 // Copyright (c) Alex Brylov. Task 5 - Number to text
 // </copyright>
+
 namespace NumberToText
 {
     using System;
     using NumberToText.Classes;
 
     /// <summary>
+    /// Contains the representation of current localization.
+    /// </summary>
+    public enum Local
+    {
+        /// <summary> English </summary>
+        EN,
+
+        /// <summary> Russian </summary>
+        RU,
+
+        /// <summary> Ukrainian </summary>
+        UA
+    }
+
+    /// <summary> A validation result of arguments submitted by user. </summary>
+    public enum InputStatus
+    {
+        /// <summary> No arguments submitted. </summary>
+        NoArgs,
+
+        /// <summary> Invalid arguments submitted. </summary>
+        InvalidArgs,
+
+        /// <summary> Valid arguments submitted. </summary>
+        ValidArgs
+    }
+
+    /// <summary>
     /// Responsible for interaction with user via console input/output
     /// </summary>
     public class ConsoleNumberToWordsConverter
     {
-        private long number;
-        private string words;
-        private BaseConverter _converter;
-        private InputStatus statuse;
-        private Local local;
+        private long _number;
+        private string _words;
+        private ConverterEurope _converter;
+        private InputStatus _statuse;
+        private Local _local;
 
         /// <summary>
         /// Gets and validates arguments passed from command line.
@@ -43,7 +72,7 @@ namespace NumberToText
                     break;
                 case InputStatus.ValidArgs:
                     this._converter = this.GetConverter();
-                    this.words = this._converter.ConvertToWords(this.number);
+                    this._words = this._converter.ConvertToWords(this._number);
                     this.PrintResult();
                     this.RepeatEntry();
                     break;
@@ -61,16 +90,16 @@ namespace NumberToText
             }
             else
             {
-                if (long.TryParse(args[0], out this.number) && this.number <= ResourcesEN.MAX)
+                if (long.TryParse(args[0], out this._number) && this._number <= ResourcesEN.MAX)
                 {
                     status = InputStatus.ValidArgs;
                     if (args.Length > 1)
                     {
-                        this.local = this.GetLocale(args[1]);
+                        this._local = this.GetLocale(args[1]);
                     }
                     else
                     {
-                        this.local = this.GetLocale();
+                        this._local = this.GetLocale();
                     }
                 }
                 else
@@ -105,10 +134,10 @@ namespace NumberToText
             return local;
         }
 
-        private BaseConverter GetConverter()
+        private ConverterEurope GetConverter()
         {
-            BaseConverter converter = null;
-            switch (this.local)
+            ConverterEurope converter = null;
+            switch (this._local)
             {
                 case Local.RU:
                     converter = new ConverterRU();
@@ -126,8 +155,8 @@ namespace NumberToText
 
         private void PrintResult()
         {
-            Console.WriteLine(this.number);
-            Console.WriteLine(this.words);
+            Console.WriteLine(this._number);
+            Console.WriteLine(this._words);
         }
 
         private void RepeatEntry()
@@ -141,19 +170,5 @@ namespace NumberToText
                 this.Run(args);
             }
         }
-    }
-
-    public enum Local
-    {
-        EN,
-        RU,
-        UA
-    }
-
-    public enum InputStatus
-    {
-        NoArgs,
-        InvalidArgs,
-        ValidArgs
     }
 }

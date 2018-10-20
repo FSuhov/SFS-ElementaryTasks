@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="NumberToText.Classes.ConverterEurope" Collapsed="true">
+    <Position X="4.25" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEAAABAAAAAABAAAACQAAAABAQAAAAAAAACQAAI=</HashCode>
+      <FileName>Classes\ConverterEurope.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="NumberToText.Classes.ConverterEN" Collapsed="true">
+    <Position X="3.25" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Classes\ConverterEN.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NumberToText.Classes.ConverterRU" Collapsed="true">
+    <Position X="5.25" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAAAAAAABAAACAACJAAAAAgAAAAAAQAAAAAAAAAQAAA=</HashCode>
+      <FileName>Classes\ConverterRU.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NumberToText.Classes.ConverterUA" Collapsed="true">
+    <Position X="5.25" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Classes\ConverterUA.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="NumberToText.Interfaces.INumberToWordsConverter" Collapsed="true">
+    <Position X="4.25" Y="0.5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Interfaces\INumberToWordsConverter.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
