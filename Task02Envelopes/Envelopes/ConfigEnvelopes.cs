@@ -1,6 +1,5 @@
 ﻿// <copyright file="ConfigEnvelopes.cs" company="Alex Brylov">
-// Copyright (c) Alex Brylov. All rights reserved.
-// Licensed under the MIT license. See LICENSE file in the project root for full license information.
+// Copyright (c) Alex Brylov. TASK 2 - ENVELOPES.
 // </copyright>
 
 namespace Envelopes
@@ -17,44 +16,34 @@ namespace Envelopes
     /// </summary>
     public static class ConfigEnvelopes
     {
+        /// <summary> Result of comparison to be shown upon compltition </summary>
+        public const string FIRST_CAN_BE_PLACED = "First envelope can be placed inside second one";
+
+        /// <summary> Result of comparison to be shown upon compltition </summary>
+        public const string SECOND_CAN_BE_PLACED = "Second envelope can be placed inside first one";
+
+        /// <summary> Result of comparison to be shown upon compltition </summary>
+        public const string NON_CAN_BE_PLACED = "Neither envelope can be placed inside another";
+
         /// <summary> Description of application and user manual</summary>
-        public const string Manual = "This application determines whether one of two envelopes given can be placed into another.\n" +
-                               "You will be asked for two consecutive float numbers " +
-                               "for first and second envelope respectively.";
-
-        /// <summary> Console message to be shown when user enters invalid data </summary>
-        public const string ErrorMessage = "Wrong parameters entered";
-
-        /// <summary> Result of comparison to be shown upon compltition </summary>
-        public const string FirstCanBePlaced = "First envelope can be placed inside second one";
-
-        /// <summary> Result of comparison to be shown upon compltition </summary>
-        public const string SecondCanBePlaced = "Second envelope can be placed inside first one";
-
-        /// <summary> Result of comparison to be shown upon compltition </summary>
-        public const string NonCanBePlaced = "Neither envelope can be placed inside another";
+        public static readonly string USER_MANUAL = string.Format(
+              "This application determines whether one of two envelopes given can be placed into another.{0}"
+            + "On launch you have to provide 4 numeric values - sides of envelopes.{0}"
+            + "Alternatively you may enter it manually via console."
+            + "Numbers must be positive, the decimal separator is \'.\'",
+            Environment.NewLine);
 
         /// <summary> Delimiter to be written on console to separate the stages of application </summary>
-        public const string Delimiter = "===============================================================";
+        public static readonly string DELIMITER = "===============================================================";
 
         /// <summary> The message to be displayed when invalid data entered </summary>
-        public const string WrongNumberMessage = "Wrong data. Number most be positive, the decimal separator is \'.\'";
+        public static readonly string WRONG_VALUE_MESSAGE = "Wrong data. Number most be positive, the decimal separator is \'.\'";
 
         /// <summary> The message prompting user to continue or stop the application </summary>
-        public const string AskToContinueMessage = "Would you like to continue? => yes or y";
+        public static readonly string ASK_TO_CONTINUE_MESSAGE = "Would you like to continue? => yes or y";
 
-        /// <summary> Representation of the result of comparison </summary>
-        public enum ComparisonResult
-        {
-            /// <summary> Representing the case when first envelope can be placed into another </summary>
-            FirstToSecond = -1,
-
-            /// <summary> Representing the case when non of envelope can be placed into the other </summary>
-            Non,
-
-            /// <summary> Representing the case when another envelope can be placed into this </summary>
-            SecondToFirst
-        }
+        /// <summary> The message to be printed on stop of application </summary>
+        public static readonly string GOODBUY_MESSAGE = "Thank you for using our application...";
 
         /// <summary> Gets queries prompting user to enter the value </summary>
         public static string[] AskUser { get; } =

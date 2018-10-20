@@ -1,6 +1,5 @@
 ﻿// <copyright file="Program.cs" company="Alex Brylov">
-// Copyright (c) Alex Brylov. All rights reserved.
-// Licensed under the MIT license. See LICENSE file in the project root for full license information.
+// Copyright (c) Alex Brylov. TASK 2 - ENVELOPES.
 // </copyright>
 
 namespace Envelopes
@@ -18,11 +17,9 @@ namespace Envelopes
     {
         private static void Main(string[] args)
         {
-            EnvelopesLogger logger = new EnvelopesLogger();
-            Action<string, float, string> userInputLogHandler = logger.Log;
-            Action<Envelope, Envelope, string, bool> comparisonResultLogHandler = logger.Log;
-
-            UserInterfaceConsole.Run(userInputLogHandler, comparisonResultLogHandler);
+            string[] localArgs = { "3.5", "5", "12", "6" };
+            ConsoleEnvelopeComparator consoleComparator = new ConsoleEnvelopeComparator();
+            consoleComparator.Run(localArgs);
         }
     }
 }

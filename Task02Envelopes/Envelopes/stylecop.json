@@ -9,7 +9,7 @@
   "settings": {
     "documentationRules": {
       "companyName": "Alex Brylov",
-      "copyrightText": "Copyright (c) {companyName}. All rights reserved.\nLicensed under the {licenseName} license. See {licenseFile} file in the project root for full license information.",
+      "copyrightText": "Copyright (c) {companyName}. TASK 2 - ENVELOPES.",
       "variables": {
         "licenseName": "MIT",
         "licenseFile": "LICENSE"
