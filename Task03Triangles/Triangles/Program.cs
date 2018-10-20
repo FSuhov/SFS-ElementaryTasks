@@ -1,16 +1,9 @@
 ﻿// <copyright file="Program.cs" company="Alex Brylov">
-// Copyright (c) Alex Brylov. All rights reserved.
-// Licensed under the MIT license. See LICENSE file in the project root for full license information.
+// Copyright (c) Alex Brylov. TASK 3 - TRIANGLES
 // </copyright>
 
 namespace Triangles
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
-
     /// <summary> Contains an entry point of the application </summary>
     internal class Program
     {
@@ -18,9 +11,9 @@ namespace Triangles
         /// <param name="args"> Optional arguments to be passed </param>
         private static void Main(string[] args)
         {
-            ShapeContainer triangles = new ShapeContainer();
-            ConsoleUserAdapter userAdapter = new ConsoleUserAdapter();
-            userAdapter.Run(triangles);
+            string[] localArgs = { "First", "23", "17.5", "12" };
+            ShapeConsoleTester shapeConsole = new ShapeConsoleTester();
+            shapeConsole.Run(localArgs);
         }
     }
 }

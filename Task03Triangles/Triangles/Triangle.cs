@@ -1,17 +1,12 @@
 ﻿// <copyright file="Triangle.cs" company="Alex Brylov">
-// Copyright (c) Alex Brylov. All rights reserved.
-// Licensed under the MIT license. See LICENSE file in the project root for full license information.
+// Copyright (c) Alex Brylov. TASK 3 - TRIANGLES
 // </copyright>
 namespace Triangles
 {
     using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
 
     /// <summary> Represents a shape with three sides </summary>
-    public class Triangle : Shape
+    public class Triangle : IShape
     {
         private double sideA;
         private double sideB;
@@ -30,12 +25,15 @@ namespace Triangles
             this.sideC = c;
         }
 
+        /// <summary> Gets or sets verbal name of shape given by user </summary>
+        public string Name { get; set; }
+
         /// <summary>
         /// Compares current instance with another instance of Shape based on Area
         /// </summary>
         /// <param name="other"> An instance of shape to compare with </param>
         /// <returns> Comparison result: 1 if this smaller than other, -1 if larger, 0 if equal </returns>
-        public override int CompareTo(Shape other)
+        public int CompareTo(IShape other)
         {
             double thisArea = this.GetArea();
             double otherArea = other.GetArea();
@@ -55,7 +53,7 @@ namespace Triangles
 
         /// <summary> Calculates an area of Triangle by Heron formula </summary>
         /// <returns> An area of this instance of triangle </returns>
-        public override double GetArea()
+        public double GetArea()
         {
             double perimeter = this.sideA + this.sideB + this.sideC;
             return Math.Sqrt(
