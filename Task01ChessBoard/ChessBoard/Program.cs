@@ -14,7 +14,7 @@ namespace ChessBoard
     {
         private static void Main(string[] args)
         {
-            string[] localArgs = { "108", "73" };
+            string[] localArgs = { };
             ChessBoardConsoleUserInterface chessBoard = new ChessBoardConsoleUserInterface();
             chessBoard.ReadInputAndSetStatus(localArgs);
             chessBoard.PrintBoardOrMessage();

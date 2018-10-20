@@ -46,6 +46,10 @@ namespace LuckyTickets
             return counter;
         }
 
+        /// <summary>
+        /// Creates an informative string about the range of possible tickets serial numbers
+        /// </summary>
+        /// <returns> A string containing minimal and maximum possible serial number </returns>
         public override string ToString()
         {
             return string.Format("{0} within the range of 0 and {1}", this._ticketIdentifier.ToString(), this._maxNumber);

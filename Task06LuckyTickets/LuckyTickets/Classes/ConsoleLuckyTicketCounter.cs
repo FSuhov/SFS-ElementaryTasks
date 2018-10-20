@@ -20,7 +20,6 @@ namespace LuckyTickets
         /// <param name="args"> Command line arguments submitted by user. </param>
         public void SetStatus(string[] args)
         {
-            Console.WriteLine(LuckyTicketsConfig.USER_MANUAL);
             switch (args.Length)
             {
                 case 0:
@@ -65,6 +64,7 @@ namespace LuckyTickets
                         Console.WriteLine("No command line arguments provided");
                         Console.ResetColor();
                         Console.WriteLine(LuckyTicketsConfig.ERROR_ADVISE_NO_ARGS);
+                        Console.WriteLine(LuckyTicketsConfig.USER_MANUAL);
                         break;
                     case LuckyTicketsConfig.Status.InvalidPath:
                         Console.Error.WriteLine("Unable to locate file");

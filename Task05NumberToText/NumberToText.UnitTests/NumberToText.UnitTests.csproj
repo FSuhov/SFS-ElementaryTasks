@@ -51,6 +51,8 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ConverterENTests.cs" />
+    <Compile Include="ConverterRUTests.cs" />
+    <Compile Include="ConverterUATests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

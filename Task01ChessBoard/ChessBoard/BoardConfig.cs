@@ -48,7 +48,7 @@ namespace ChessBoard
                                                  + "1. look up for cmd and launch it{0}"
                                                  + @"2. navigate to directory with.exe file, for example: cd d:\REPOS\CHESSBOARD\{0}"
                                                  + "3.type: chessboard.exe followed by desired width and height of chessboard{0}"
-                                                 + "You may also enter optional third boolean argument - whether black player is located above (default, true)"
+                                                 + "You may also enter optional third boolean argument - whether black player is located above (default, true){0}"
                                                  + "========================================================================================",
                                                    Environment.NewLine);
 
